@@ -10,8 +10,9 @@ def create
 
   if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      redirect_to root
+      redirect_to edit_user_path(@user)
   else
+    @user = User.new
     flash[:errors] = ["Invalid Username/Password Combination"]
     render :new
   end

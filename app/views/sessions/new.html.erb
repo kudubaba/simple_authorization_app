@@ -10,8 +10,11 @@
 </div>
 <div>
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %>
 </div>
 
 <%= f.submit "Login" %>
 <% end %>
+
+<p>Don't have an account yet?</p>
+<%= link_to "Create one here", new_user_path %>
