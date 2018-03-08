@@ -20,8 +20,7 @@ class UsersController < ApplicationController
 
   # shows edit form
   def edit
-    unless session[:user_id].nil?
-      @user = User.find(session[:user_id])
+    if @user = current_user
       if @user.id != params[:id].to_i
         redirect_to edit_user_path(@user)
       end
