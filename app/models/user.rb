@@ -15,23 +15,13 @@ class User < ApplicationRecord
 
 
   def req_chars_for_password
-    errors.add(:password, "must contain certain stuff") unless (has_lowercase && has_uppercase && has_digit)
+    errors.add(:password, "must contain at least one number, one uppercase letter and one lower case letter.") unless (has_required_characters)
   end
 
   private
 
-  def has_lowercase
-    /[a-z]/.match(password)
-
-  end
-
-  def has_uppercase
-    /[A-Z]/.match(password)
-
-  end
-
-  def has_digit
-    /[\d]/.match(password)
+  def has_required_characters
+    /[a-zA-Z\d]/.match(password)
 
   end
 end
